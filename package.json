@@ -1,0 +1,24 @@
+{
+  "name": "js-native-black",
+  "version": "1.0.0",
+  "description": "this app - 004-blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minusmanru/004_blog.git"
+  },
+  "keywords": [
+    "js",
+    "blog",
+    "javascript"
+  ],
+  "author": "Andrei Shinkarenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/minusmanru/004_blog/issues"
+  },
+  "homepage": "https://github.com/minusmanru/004_blog#readme"
+}
