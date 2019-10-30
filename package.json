@@ -4,7 +4,10 @@
   "description": "this app - 004-blog",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode=development",
+    "build": "webpack --mode=production",
+    "start": "webpack-dev-server --mode=development --open"
   },
   "repository": {
     "type": "git",
@@ -20,5 +23,11 @@
   "bugs": {
     "url": "https://github.com/minusmanru/004_blog/issues"
   },
-  "homepage": "https://github.com/minusmanru/004_blog#readme"
+  "homepage": "https://github.com/minusmanru/004_blog#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^4.0.0-beta.8",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.9.0"
+  }
 }
