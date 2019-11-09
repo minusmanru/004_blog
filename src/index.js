@@ -17,3 +17,4 @@ navigation.registerTabs([ // сюда передаём массив из объ�
     {name: 'posts', component: posts},
     {name: 'favorite', component: favorite}
 ])
+

@@ -2,7 +2,7 @@ export class Component { // клас от которого м.б. наследо
     constructor(id) { // принимает id  отвечающий за корневой блок(элемент) компонента например header или form
         this.$el = document.getElementById(id) // $el - так называем пременную в которой DOM компонент
         this.init()
-        console.log('log - ',this.$el);
+        //console.log('log - 4 ',this.$el);
         
     }
 
