@@ -1,6 +1,7 @@
 import { Component } from '../core/component';
 import { Form } from '../core/form';
 import { Validators } from '../core/validators'; // val0.1 для валидаторов класс не нужно создавать
+import { apiService } from '../services/api.service';
 
 export class CreateComponent extends Component {
     constructor(id) {
@@ -29,18 +30,21 @@ export class CreateComponent extends Component {
     }
 
 } 
-
-function submitHandler(event) {
+// что бы обратится к apiService, делаем function submitHandler() асинхронной - добавляем async
+async function submitHandler(event) { 
     event.preventDefault() // отмена перезагрузки формы
 
     if (this.form.isValid()) { // val1   если форма валидная, выполняем код
 
         const formData = {   // получаем значения из формы
             type: this.$el.type.value, // получаем значение 
+            date: new Date().toLocaleDateString(),
             ...this.form.value() // объеденяем объекты, добавляя в const formData    .form.value()
         }
+        await apiService.createPost(formData) // ждём apiService и вызываем у него метод .createPost() в который передаём const formData 
+
         this.form.clear() // очищаем форму после сохранения значений в переменную
-        console.log('submit  + ', formData);
+        alert('запись создана в DB')
     } 
 
 
