@@ -15,15 +15,41 @@ class ApiService { // тут описываем статические, или �
             })
             // fetch() - метод для обращения на сервер, куда передаём урл, или объект request. Нужно подождать пока объект request создастся
             // для этого добавляем async к createPost(post) b await к fetch()
-            const response = await fetch(request) // метод fetch возвращает объект - response у которого есть метод json() - await response.json()
-            return await response.json() // возвращает промис
+            //const response = await fetch(request) // метод fetch возвращает объект - response у которого есть метод json() - await response.json()
+            //return await response.json() // возвращает промис
+            return useRequest(request) // вместо двух дублирующихся строчек, эту функцию
+            
         } catch (error) { // в случае ошибок console.error(error)
             console.error(error)
         }
     }
+    
+    async fetchPost() {
+        try {
+            const request = new Request(`${this.url}/posts.json`, {
+                method: 'get' // метод 'get' идёт по умолчанию, его можно не указывать
+            })
+            // const response = await fetch(request)
+            // return await response.json()
+
+            return useRequest(request) // вместо двух дублирующихся строчек, эту функцию
+
+        } catch (error) { 
+            console.error(error)
+        }
+    }
+    
+
 
 
 }
+
+async function useRequest(request) {
+    const response = await fetch(request)
+    return await response.json()
+
+}
+
 
 // const apiservice с маленькой буквы п.ч. это экземплzр класса
 export const apiService = new ApiService('https://blog-aff54.firebaseio.com') // в конструктор передаём ссылку

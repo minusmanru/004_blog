@@ -8,10 +8,16 @@ export class Component { // клас от которого м.б. наследо
 
     init() {}  // вызываем этот метод когда получим значение this.$el
     
+    onShow() {}
+
+    onHide() {}
+    
     hide() {
         this.$el.classList.add('hide')
+        this.onHide()
     }
     show() {
-        this.$el.classList.remove('hide')        
+        this.$el.classList.remove('hide')  
+        this.onShow()      
     }
 }
