@@ -22,8 +22,8 @@ export class CreateComponent extends Component {
         */  
        
         this.form = new Form(this.$el, { 
-            title: [Validators.required], // val0.2  здесь метод не вызывается, а передаём ссылку на этот статический метод
-            fulltext: [Validators.required] 
+            title: [Validators.required, Validators.minLength(5)], // val0.2  здесь метод не вызывается, а передаём ссылку на этот статический метод
+            fulltext: [Validators.required, Validators.minLength(6)] 
         }) // controls из Form представлены в виде оъекта, где ключ (title:fulltext:) - это название контрола, а значение - [Validators.required] - массив валидаторов
        
     }
@@ -33,14 +33,16 @@ export class CreateComponent extends Component {
 function submitHandler(event) {
     event.preventDefault() // отмена перезагрузки формы
 
-    if (this.form.isValid) { // val1   если форма валидная, выполняем код
+    if (this.form.isValid()) { // val1   если форма валидная, выполняем код
 
         const formData = {   // получаем значения из формы
             type: this.$el.type.value, // получаем значение 
             ...this.form.value() // объеденяем объекты, добавляя в const formData    .form.value()
         }
+        this.form.clear() // очищаем форму после сохранения значений в переменную
+        console.log('submit  + ', formData);
+    } 
 
-        console.log('submit', formData);
-    }
+
 }
 
