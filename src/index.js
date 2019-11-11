@@ -3,11 +3,14 @@ import {NavigationComponent} from './components/navigation.component'
 import { CreateComponent } from './components/create.component';
 import { PostsComponent } from './components/posts.component';
 import { FavoriteComponent } from './components/favorite.cponent';
+import { LoaderComponent } from './components/loader.component';
+
 
 const header = new HeaderComponent('header') // и создаём сам header
 
 const navigation = new NavigationComponent('navigation')
-const posts = new PostsComponent('posts')
+const loader = new LoaderComponent('loader')
+const posts = new PostsComponent('posts', {loader}) // в es6 пишем {loader} вместо {loader: loader} т.к. совпадают ключ и значение
 const create = new CreateComponent('create')
 const favorite = new FavoriteComponent('favorite')
 

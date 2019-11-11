@@ -4,15 +4,18 @@ import { TransformService } from '../services/transform.service';
 
 
 export class PostsComponent extends Component {
-    constructor(id) {
+    constructor(id, {loader}) { // {loader} здесь делаем деструктуризацию, и забираем только то что нужно
         super(id)
+        this.loader = loader
     }
 
     async onShow() {
+        this.loader.show()
         const fbData = await apiService.fetchPost()
         const posts = TransformService.fbObjectToArray(fbData)
         // posts.map(post => renderPost(post)) - это массив, поэтому сразу его соеденяем в строку через пробел с помощью .join(' ')
         const html = posts.map(post => renderPost(post)) 
+        this.loader.hide()
         this.$el.insertAdjacentHTML('afterbegin', html.join(' ')) // .join(' ') выводит элементы массива заменяя запятую на пробел
     }
 
