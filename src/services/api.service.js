@@ -18,7 +18,7 @@ class ApiService { // тут описываем статические, или �
             //const response = await fetch(request) // метод fetch возвращает объект - response у которого есть метод json() - await response.json()
             //return await response.json() // возвращает промис
             return useRequest(request) // вместо двух дублирующихся строчек, эту функцию
-            
+
         } catch (error) { // в случае ошибок console.error(error)
             console.error(error)
         }
@@ -39,6 +39,20 @@ class ApiService { // тут описываем статические, или �
         }
     }
     
+    async fetchPostById(id) { // функция будет загружать пост по ID 
+        try {
+            const request = new Request(`${this.url}/posts/${id}.json`, { // грузим пост по id
+                method: 'get' // метод 'get' идёт по умолчанию, его можно не указывать
+            })
+            
+
+            return useRequest(request) // распарсит и вернёт пост
+
+        } catch (error) { 
+            console.error(error)
+        }
+
+    }
 
 
 
